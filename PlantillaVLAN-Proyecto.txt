@@ -1,0 +1,2674 @@
+VLAN 15
+name GESTION
+VLAN 90
+name ADMINISTACION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+
+-------------------------------------------CENTROAMERICA--------------------------------------
+//Switch-AdministacionCentroAmerica
+conf t
+hostname Switch-AdministacionCentroAmerica
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 90
+name ADMINISTACION
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Administracion-CA
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-ADMINISTRACION-Centroamerica
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.168.0.10 255.255.255.0
+ip default-gateway 192.168.0.1
+
+//Router-ADMINISTRACION-Centroamerica
+conf t
+inter gi0/0.90
+description ADMINISTACION
+encapsulation DOt1Q 90
+ip add 192.168.1.10 255.255.255.0
+
+
+inter gi0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.168.0.1 255.255.255.0
+
+inter gi0/0
+no shut
+
+--------------------Laboratorios CentroAmerica--------------------
+//Switch-LAB5-Centroamerica
+conf t
+hostname Switch-LAB5-Centroamerica
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Laboratorio-CA
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Centroamerica
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.9.10 255.255.255.0
+ip default-gateway 192.169.9.1
+
+
+
+//Switch-LAB4-Centroamerica
+conf t
+hostname Switch-LAB4-Centroamerica
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC2-Laboratorio-CA
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Centroamerica
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.7.10 255.255.255.0
+ip default-gateway 192.169.7.1
+
+
+//Switch-LAB1-Centroamerica
+conf t
+hostname Switch-LAB1-Centroamerica
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC3-Laboratorio-CA
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Centroamerica
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.1.10 255.255.255.0
+ip default-gateway 192.169.1.1
+
+
+
+
+//Switch-LAB3-Centroamerica
+conf t
+hostname Switch-LAB3-Centroamerica
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC4-Laboratorio-CA
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Centroamerica
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.5.10 255.255.255.0
+ip default-gateway 192.169.5.1
+
+
+
+
+
+//Switch-LAB2-Centroamerica
+conf t
+hostname Switch-LAB2-Centroamerica
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC5-Laboratorio-CA
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Centroamerica
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.3.10 255.255.255.0
+ip default-gateway 192.169.3.1
+
+
+//Router-Laboratorios-Centroamerica
+conf t
+inter fa0/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.10.10 255.255.255.0
+
+
+inter fa0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.9.1 255.255.255.0
+
+inter fa0/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.8.10 255.255.255.0
+
+
+inter fa0/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.7.1 255.255.255.0
+
+
+inter eth1/2.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.2.10 255.255.255.0
+
+
+inter eth1/2.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.1.1 255.255.255.0
+
+
+inter eth1/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.4.10 255.255.255.0
+
+
+inter eth1/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.3.1 255.255.255.0
+
+
+inter eth1/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.6.10 255.255.255.0
+
+
+inter eth1/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.5.1 255.255.255.0
+
+inter fa0/0
+no shut
+inter fa0/1
+no shut
+inter eth1/0
+no shut
+inter eth1/2
+no shut
+inter eth1/1
+no shut
+
+
+
+-------------------------------------------PRADO--------------------------------------
+//Switch-AdministacionPrado
+conf t
+hostname Switch-AdministacionPrado
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 90
+name ADMINISTACION
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Administracion-Prado
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-ADMINISTRACION-Prado
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.168.4.10 255.255.255.0
+ip default-gateway 192.168.4.1
+
+//Router-ADMINISTRACION-Prado
+conf t
+inter gi0/0.90
+description ADMINISTACION
+encapsulation DOt1Q 90
+ip add 192.168.5.10 255.255.255.0
+
+
+inter gi0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.168.4.1 255.255.255.0
+
+inter gi0/0
+no shut
+
+--------------------Laboratorios Prado--------------------
+//Switch-LAB5-Prado
+conf t
+hostname Switch-LAB5-Prado
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Laboratorio-Prado
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Prado
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.19.10 255.255.255.0
+ip default-gateway 192.169.19.1
+
+
+//Switch-LAB4-Prado
+conf t
+hostname Switch-LAB4-Prado
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC2-Laboratorio-Prado
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Prado
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.17.10 255.255.255.0
+ip default-gateway 192.169.17.1
+
+
+//Switch-LAB1-Prado
+conf t
+hostname Switch-LAB1-Prado
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC3-Laboratorio-Prado
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Prado
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.11.10 255.255.255.0
+ip default-gateway 192.169.11.1
+
+
+//Switch-LAB3-Prado
+conf t
+hostname Switch-LAB3-Prado
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC4-Laboratorio-Prado
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Prado
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.15.10 255.255.255.0
+ip default-gateway 192.169.15.1
+
+
+//Switch-LAB2-Prado
+conf t
+hostname Switch-LAB2-Prado
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC5-Laboratorio-Prado
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Prado
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.13.10 255.255.255.0
+ip default-gateway 192.169.13.1
+
+
+
+
+//Router-Laboratorios-Prado
+conf t
+inter fa0/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.20.10 255.255.255.0
+
+
+inter fa0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.19.1 255.255.255.0
+
+inter fa0/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.18.10 255.255.255.0
+
+
+inter fa0/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.17.1 255.255.255.0
+
+
+inter eth1/2.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.12.10 255.255.255.0
+
+
+inter eth1/2.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.11.1 255.255.255.0
+
+
+inter eth1/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.14.10 255.255.255.0
+
+
+inter eth1/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.13.1 255.255.255.0
+
+
+inter eth1/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.16.10 255.255.255.0
+
+
+inter eth1/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.15.1 255.255.255.0
+
+inter fa0/0
+no shut
+inter fa0/1
+no shut
+inter eth1/0
+no shut
+inter eth1/2
+no shut
+inter eth1/1
+no shut
+
+
+
+
+-------------------------------------------PROCERES--------------------------------------
+//Switch-AdministacionProceres
+conf t
+hostname Switch-AdministacionProceres
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 90
+name ADMINISTACION
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Administracion-Proceres
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-ADMINISTRACION-Proceres
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.168.8.10 255.255.255.0
+ip default-gateway 192.168.8.1
+
+//Router-ADMINISTRACION-Proceres
+conf t
+inter gi0/0.90
+description ADMINISTACION
+encapsulation DOt1Q 90
+ip add 192.168.9.10 255.255.255.0
+
+
+inter gi0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.168.8.1 255.255.255.0
+
+inter gi0/0
+no shut
+
+--------------------Laboratorios Proceres--------------------
+//Switch-LAB5-Proceres
+conf t
+hostname Switch-LAB5-Proceres
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Laboratorio-Proceres
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Proceres
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.29.10 255.255.255.0
+ip default-gateway 192.169.29.1
+
+
+//Switch-LAB4-Proceres
+conf t
+hostname Switch-LAB4-Proceres
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC2-Laboratorio-Proceres
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Proceres
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.27.10 255.255.255.0
+ip default-gateway 192.169.27.1
+
+
+//Switch-LAB1-Proceres
+conf t
+hostname Switch-LAB1-Proceres
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC3-Laboratorio-Proceres
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Proceres
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.21.10 255.255.255.0
+ip default-gateway 192.169.21.1
+
+
+//Switch-LAB3-Proceres
+conf t
+hostname Switch-LAB3-Proceres
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC4-Laboratorio-Proceres
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Proceres
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.25.10 255.255.255.0
+ip default-gateway 192.169.25.1
+
+
+
+//Switch-LAB2-Proceres
+conf t
+hostname Switch-LAB2-Proceres
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC5-Laboratorio-Proceres
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Proceres
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.23.10 255.255.255.0
+ip default-gateway 192.169.23.1
+
+
+//Router-Laboratorios-Prado
+conf t
+inter fa0/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.30.10 255.255.255.0
+
+
+inter fa0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.29.1 255.255.255.0
+
+inter fa0/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.28.10 255.255.255.0
+
+
+inter fa0/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.27.1 255.255.255.0
+
+
+inter eth1/2.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.22.10 255.255.255.0
+
+
+inter eth1/2.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.21.1 255.255.255.0
+
+
+inter eth1/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.24.10 255.255.255.0
+
+
+inter eth1/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.23.1 255.255.255.0
+
+
+inter eth1/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.26.10 255.255.255.0
+
+
+inter eth1/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.25.1 255.255.255.0
+
+inter fa0/0
+no shut
+inter fa0/1
+no shut
+inter eth1/0
+no shut
+inter eth1/2
+no shut
+inter eth1/1
+no shut
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------NORTE SPS--------------------------------------
+//Switch-AdministacionNorteSpS
+conf t
+hostname Switch-AdministacionNorteSpS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 90
+name ADMINISTACION
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Administracion-NORTESPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-ADMINISTRACION-NORTESPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.168.12.10 255.255.255.0
+ip default-gateway 192.168.12.1
+
+//Router-ADMINISTRACION-NorteSPS
+conf t
+inter gi0/0.90
+description ADMINISTACION
+encapsulation DOt1Q 90
+ip add 192.168.13.10 255.255.255.0
+
+
+inter gi0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.168.12.1 255.255.255.0
+
+inter gi0/0
+no shut
+
+
+--------------------Laboratorios NorteSPS--------------------
+//Switch-LAB5-NorteSPS
+conf t
+hostname Switch-LAB5-NorteSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Laboratorio-NorteSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-NorteSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.39.10 255.255.255.0
+ip default-gateway 192.169.39.1
+
+
+
+//Switch-LAB4-NorteSPS
+conf t
+hostname Switch-LAB4-NorteSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC2-Laboratorio-NorteSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-NorteSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.37.10 255.255.255.0
+ip default-gateway 192.169.37.1
+
+
+//Switch-LAB1-NorteSPS
+conf t
+hostname Switch-LAB1-NorteSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC3-Laboratorio-NorteSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-NorteSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.31.10 255.255.255.0
+ip default-gateway 192.169.31.1
+
+
+
+
+//Switch-LAB3-NorteSPS
+conf t
+hostname Switch-LAB3-NorteSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC4-Laboratorio-NorteSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-NorteSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.35.10 255.255.255.0
+ip default-gateway 192.169.35.1
+
+
+
+
+
+//Switch-LAB2-NorteSPS
+conf t
+hostname Switch-LAB2-NorteSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC5-Laboratorio-NorteSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-NorteSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.33.10 255.255.255.0
+ip default-gateway 192.169.33.1
+
+
+
+//Router-Laboratorios-NorteSPS
+conf t
+inter fa0/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.40.10 255.255.255.0
+
+
+inter fa0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.39.1 255.255.255.0
+
+inter fa0/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.38.10 255.255.255.0
+
+
+inter fa0/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.37.1 255.255.255.0
+
+
+inter eth1/2.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.32.10 255.255.255.0
+
+
+inter eth1/2.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.31.1 255.255.255.0
+
+
+inter eth1/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.34.10 255.255.255.0
+
+
+inter eth1/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.33.1 255.255.255.0
+
+
+inter eth1/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.36.10 255.255.255.0
+
+
+inter eth1/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.35.1 255.255.255.0
+
+inter fa0/0
+no shut
+inter fa0/1
+no shut
+inter eth1/0
+no shut
+inter eth1/2
+no shut
+inter eth1/1
+no shut
+
+
+-------------------------------------------CentroSPS--------------------------------------
+//Switch-AdministacionCentroSPS
+conf t
+hostname Switch-AdministacionCentroSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 90
+name ADMINISTACION
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Administracion-CentroSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-ADMINISTRACION-CentroSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.168.16.10 255.255.255.0
+ip default-gateway 192.168.16.1
+
+//Router-ADMINISTRACION-CentroSPS
+conf t
+inter gi0/0.90
+description ADMINISTACION
+encapsulation DOt1Q 90
+ip add 192.168.17.10 255.255.255.0
+
+
+inter gi0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.168.16.1 255.255.255.0
+
+inter gi0/0
+no shut
+
+--------------------Laboratorios CentroSPS--------------------
+//Switch-LAB5-CentroSPS
+conf t
+hostname Switch-LAB5-CentroSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Laboratorio-CentroSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-CentroSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.49.10 255.255.255.0
+ip default-gateway 192.169.49.1
+
+
+
+//Switch-LAB4-CentroSPS
+conf t
+hostname Switch-LAB4-CentroSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC2-Laboratorio-CentroSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-CentroSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.47.10 255.255.255.0
+ip default-gateway 192.169.47.1
+
+
+//Switch-LAB1-CentroSPS
+conf t
+hostname Switch-LAB1-CentroSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC3-Laboratorio-CentroSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-CentroSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.41.10 255.255.255.0
+ip default-gateway 192.169.41.1
+
+
+
+
+//Switch-LAB3-CentroSPS
+conf t
+hostname Switch-LAB3-CentroSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC4-Laboratorio-CentroSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-CentroSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.45.10 255.255.255.0
+ip default-gateway 192.169.45.1
+
+
+
+
+
+//Switch-LAB2-CentroSPS
+conf t
+hostname Switch-LAB2-CentroSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC5-Laboratorio-CentroSPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-CentroSPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.43.10 255.255.255.0
+ip default-gateway 192.169.43.1
+
+
+
+//Router-Laboratorios-CentroSPS
+conf t
+inter fa0/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.50.10 255.255.255.0
+
+
+inter fa0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.49.1 255.255.255.0
+
+inter fa0/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.48.10 255.255.255.0
+
+
+inter fa0/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.47.1 255.255.255.0
+
+
+inter eth1/2.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.42.10 255.255.255.0
+
+
+inter eth1/2.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.41.1 255.255.255.0
+
+
+inter eth1/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.44.10 255.255.255.0
+
+
+inter eth1/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.43.1 255.255.255.0
+
+
+inter eth1/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.46.10 255.255.255.0
+
+
+inter eth1/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.45.1 255.255.255.0
+
+inter fa0/0
+no shut
+inter fa0/1
+no shut
+inter eth1/0
+no shut
+inter eth1/2
+no shut
+inter eth1/1
+no shut
+
+
+
+
+
+-------------------------------------------LaCeiba--------------------------------------
+//Switch-AdministacionLaCeiba
+conf t
+hostname Switch-AdministacionLaCeiba
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 90
+name ADMINISTACION
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Administracion-LaCeiba
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-ADMINISTRACION-LaCeiba
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.168.20.10 255.255.255.0
+ip default-gateway 192.168.20.1
+
+//Router-ADMINISTRACION-LaCeiba
+conf t
+inter gi0/0.90
+description ADMINISTACION
+encapsulation DOt1Q 90
+ip add 192.168.21.10 255.255.255.0
+
+
+inter gi0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.168.20.1 255.255.255.0
+
+inter gi0/0
+no shut
+
+--------------------Laboratorios LaCeiba--------------------
+//Switch-LAB5-LaCeiba
+conf t
+hostname Switch-LAB5-LaCeiba
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Laboratorio-LaCeiba
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-LaCeiba
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.59.10 255.255.255.0
+ip default-gateway 192.169.59.1
+
+
+
+//Switch-LAB4-LaCeiba
+conf t
+hostname Switch-LAB4-LaCeiba
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC2-Laboratorio-LaCeiba
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-LaCeiba
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.57.10 255.255.255.0
+ip default-gateway 192.169.57.1
+
+
+//Switch-LAB1-LaCeiba
+conf t
+hostname Switch-LAB1-LaCeiba
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC3-Laboratorio-LaCeiba
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-LaCeiba
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.51.10 255.255.255.0
+ip default-gateway 192.169.51.1
+
+
+
+
+//Switch-LAB3-LaCeiba
+conf t
+hostname Switch-LAB3-LaCeiba
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC4-Laboratorio-LaCeiba
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-LaCeiba
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.55.10 255.255.255.0
+ip default-gateway 192.169.55.1
+
+
+
+
+
+//Switch-LAB2-LaCeiba
+conf t
+hostname Switch-LAB2-LaCeiba
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC5-Laboratorio-LaCeiba
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-LaCeiba
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.53.10 255.255.255.0
+ip default-gateway 192.169.53.1
+
+
+
+//Router-Laboratorios-LaCeiba
+conf t
+inter fa0/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.60.10 255.255.255.0
+
+
+inter fa0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.59.1 255.255.255.0
+
+inter fa0/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.58.10 255.255.255.0
+
+
+inter fa0/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.57.1 255.255.255.0
+
+
+inter eth1/2.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.52.10 255.255.255.0
+
+
+inter eth1/2.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.51.1 255.255.255.0
+
+
+inter eth1/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.54.10 255.255.255.0
+
+
+inter eth1/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.53.1 255.255.255.0
+
+
+inter eth1/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.56.10 255.255.255.0
+
+
+inter eth1/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.55.1 255.255.255.0
+
+inter fa0/0
+no shut
+inter fa0/1
+no shut
+inter eth1/0
+no shut
+inter eth1/2
+no shut
+inter eth1/1
+no shut
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------UNITEC-TGU--------------------------------------
+//Switch-ADMINISTRACION-Unitec-TGU
+conf t
+hostname Switch-ADMINISTRACION-Unitec-TGU
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 90
+name ADMINISTACION
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Admin-UTGU
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-ADMINISTRACION-Unitec-TGU
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.168.28.10 255.255.255.0
+ip default-gateway 192.168.28.1
+
+//Router-ADMINISTRACION-Unitec-TGU
+conf t
+inter gi0/0.90
+description ADMINISTACION
+encapsulation DOt1Q 90
+ip add 192.168.29.10 255.255.255.0
+
+
+inter gi0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.168.28.1 255.255.255.0
+
+inter gi0/0
+no shut
+
+--------------------Laboratorios Unitec-TGU--------------------
+//Switch-LAB5-Unitec-TGU
+conf t
+hostname Switch-LAB5-Unitec-TGU
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC5-Laboratorio-Unitec-TGU
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-TGU
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.79.10 255.255.255.0
+ip default-gateway 192.169.79.1
+
+
+//Switch-LAB4-Unitec-TGU
+conf t
+hostname Switch-LAB4-Unitec-TGU
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC4-Laboratorio-Unitec-TGU
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-TGU
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.77.10 255.255.255.0
+ip default-gateway 192.169.77.1
+
+
+//Switch-LAB3-Unitec-TGU
+conf t
+hostname Switch-LAB3-Unitec-TGU
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Laboratorio-Proceres
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-TGU
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.75.10 255.255.255.0
+ip default-gateway 192.169.75.1
+
+
+
+//Switch-LAB2-Unitec-TGU
+conf t
+hostname Switch-LAB5-Unitec-TGU
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC2-Laboratorio-Unitec-TGU
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-TGU
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.73.10 255.255.255.0
+ip default-gateway 192.169.73.1
+
+
+//Switch-LAB1-Unitec-TGU
+conf t
+hostname Switch-LAB1-Unitec-TGU
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC3-Laboratorio-Proceres
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-TGU
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.71.10 255.255.255.0
+ip default-gateway 192.169.71.1
+
+
+
+
+
+//Router-Laboratorios-Unitec-TGU
+conf t
+inter fa0/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.80.10 255.255.255.0
+
+
+inter fa0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.79.1 255.255.255.0
+
+inter fa0/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.78.10 255.255.255.0
+
+
+inter fa0/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.77.1 255.255.255.0
+
+
+inter eth1/2.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.72.10 255.255.255.0
+
+
+inter eth1/2.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.71.1 255.255.255.0
+
+
+inter eth1/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.74.10 255.255.255.0
+
+
+inter eth1/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.73.1 255.255.255.0
+
+
+inter eth1/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.76.10 255.255.255.0
+
+
+inter eth1/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.75.1 255.255.255.0
+
+inter fa0/0
+no shut
+inter fa0/1
+no shut
+inter eth1/0
+no shut
+inter eth1/2
+no shut
+inter eth1/1
+no shut
+
+
+
+
+
+
+
+-------------------------------------------UNITEC-SPS--------------------------------------
+//Switch-ADMINISTRACION-Unitec-SPS
+conf t
+hostname Switch-ADMINISTRACION-Unitec-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 90
+name ADMINISTACION
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Admin-USPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-ADMINISTRACION-UNITEC-SPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.168.24.10 255.255.255.0
+ip default-gateway 192.168.24.1
+
+//Router-ADMINISTRACION-Unitec-TGU
+conf t
+inter gi0/0.90
+description ADMINISTACION
+encapsulation DOt1Q 90
+ip add 192.168.25.10 255.255.255.0
+
+
+inter gi0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.168.24.1 255.255.255.0
+
+inter gi0/0
+no shut
+
+--------------------Laboratorios Unitec-SPS--------------------
+//Switch-LAB5-Unitec-SPS
+conf t
+hostname Switch-LAB5-Unitec-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC5-Laboratorio-Unitec-SPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-SPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.69.10 255.255.255.0
+ip default-gateway 192.169.69.1
+
+
+
+//Switch-LAB4-Unitec-SPS
+conf t
+hostname Switch-LAB4-Unitec-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC4-Laboratorio-Unitec-SPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-SPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.67.10 255.255.255.0
+ip default-gateway 192.169.67.1
+
+
+
+
+//Switch-LAB3-Unitec-SPS
+conf t
+hostname Switch-LAB3-Unitec-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC1-Laboratorio-Unitec-SPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-SPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.65.10 255.255.255.0
+ip default-gateway 192.169.65.1
+
+
+
+//Switch-LAB2-Unitec-SPS
+conf t
+hostname Switch-LAB2-Unitec-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC2-Laboratorio-Unitec-SPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-SPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.63.10 255.255.255.0
+ip default-gateway 192.169.63.1
+
+
+
+
+//Switch-LAB1-Unitec-SPS
+conf t
+hostname Switch-LAB1-Unitec-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 45
+name LABORATORIOS
+VLAN 900
+name SIN-USO
+
+inter fa0/2
+description HACIA-PC3-Laboratorio-Unitec-SPS
+switchport mode trunk
+
+inter fa0/1
+description HACIA-Router-Laboratorios-Unitec-SPS
+switchport mode trunk
+
+interface range fa0/3-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+interface vlan 15
+description GESTION
+ip add 192.169.61.10 255.255.255.0
+ip default-gateway 192.169.61.1
+
+
+
+
+
+//Router-Laboratorios-Unitec-SPS
+conf t
+inter fa0/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.70.10 255.255.255.0
+
+
+inter fa0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.69.1 255.255.255.0
+
+inter fa0/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.68.10 255.255.255.0
+
+
+inter fa0/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.67.1 255.255.255.0
+
+
+inter eth1/2.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.62.10 255.255.255.0
+
+
+inter eth1/2.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.61.10 255.255.255.0
+
+
+inter eth1/1.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.64.10 255.255.255.0
+
+
+inter eth1/1.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.63.1 255.255.255.0
+
+
+inter eth1/0.45
+description Laboratorios
+encapsulation DOt1Q 45
+ip add 192.169.66.10 255.255.255.0
+
+
+inter eth1/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 192.169.65.1 255.255.255.0
+
+inter fa0/0
+no shut
+inter fa0/1
+no shut
+inter eth1/0
+no shut
+inter eth1/2
+no shut
+inter eth1/1
+no shut
+
+

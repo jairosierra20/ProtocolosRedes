@@ -1,0 +1,1734 @@
+hostname CEUTEC
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/0
+description Hacia-WAN-UNITEC
+ip add 172.27.0.36 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:0::2/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description Hacia-WAN-CeutecCentro
+ip add 172.27.0.45 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:C::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/1
+description Hacia-WAN-CeutecNorte
+ip add 172.27.0.49 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:D::1/64
+clock rate 2000000
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.150 0.0.0.3
+network 172.27.0.44  0.0.0.3
+network 172.27.0.48  0.0.0.3
+network 172.27.0.154 0.0.0.3
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/0
+ipv6 eigrp 200
+inter se0/1/0
+ipv6 eigrp 200
+inter se0/1/1
+ipv6 eigrp 200
+int s0/0/1
+ipv6 eigrp 200
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+ <----------------------------------------------------->
+hostname CEUTEC-CENTRO
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+inter se0/1/0
+description Hacia-WAN-Central
+ip add 172.27.0.46 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:C::2/64
+clock rate 2000000
+no shut
+
+inter se0/1/1
+description Hacia-WAN-Centroamerica
+ip add 172.27.0.53 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:E::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Hacia-WAN-Prado
+ip add 172.27.0.69 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:F::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Hacia-WAN-Proceres
+ip add 172.27.0.85 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:10::1/64
+clock rate 2000000
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.44 0.0.0.3
+network 172.27.0.52  0.0.0.3
+network 172.27.0.68  0.0.0.3
+network 172.27.0.84  0.0.0.3
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/0
+ipv6 eigrp 200
+inter se0/1/0
+ipv6 eigrp 200
+inter se0/1/1
+ipv6 eigrp 200
+inter se0/0/1
+ipv6 eigrp 200
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+
+ <----------------------------------------------------->
+hostname CEUTEC-CENTROAMERICA
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+inter se0/1/1
+description Hacia-WAN-CeutecZCentral
+ip add 172.27.0.54 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:E::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Hacia-laboratoriosCentroamerica
+ip add 172.27.0.57 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:11::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Hacia-AdministracionCentroamerica
+ip add 172.27.0.61 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:12::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description  Hacia-EstudiantesCentroamerica
+ip add 172.27.0.65 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:13::1/64
+clock rate 2000000
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.52 0.0.0.3
+network 172.27.0.56  0.0.0.3
+network 172.27.0.60  0.0.0.3
+network 172.27.0.64  0.0.0.3
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/0
+ipv6 eigrp 200
+inter se0/1/0
+ipv6 eigrp 200
+inter se0/1/1
+ipv6 eigrp 200
+inter se0/0/1
+ipv6 eigrp 200
+exit
+ipv6 router eigrp 200
+no shut
+
+
+<----------------------------------------------------->
+hostname CEUTEC-CENTROAMERICA-Laboratorios
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/3/0
+description Hacia-WanCentroamerica
+ip add 172.27.0.58 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:11::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter eth1/2
+description Hacia-LanLaboratorio1
+ip add 10.182.54.1 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:3:2::/64
+no shut
+
+inter eth1/1
+description Hacia-LanLaboratorio2
+ip add 10.182.54.129 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:3:3::/64
+no shut
+
+inter eth1/0
+description Hacia-LanLaboratorio3
+ip add 10.182.55.1 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:3:4::/64
+no shut
+
+inter fa0/1
+description Hacia-LanLaboratorio4
+ip add 10.182.55.129 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:3:5::/64
+no shut
+
+inter fa0/0
+description Hacia-LanLaboratorio5 
+ip add 10.182.56.1 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:3:6::/64
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.56 0.0.0.3
+network 10.182.54.0  0.0.0.127
+network 10.182.54.128  0.0.0.127
+network 10.182.55.0  0.0.0.127
+network 10.182.55.128  0.0.0.127
+network 10.182.56.0  0.0.0.127
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/3/0
+ipv6 eigrp 200
+inter eth1/2
+ipv6 eigrp 200
+inter eth1/1
+ipv6 eigrp 200
+inter eth1/0
+ipv6 eigrp 200
+inter fa0/1
+ipv6 eigrp 200
+inter fa0/0
+ipv6 eigrp 200
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+<----------------------------------------------------->
+hostname CEUTEC-CENTROAMERICA-Administracion
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/0/1
+description Hacia-WanCentroamerica
+ip add 172.27.0.62 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:12::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanAdministracion
+ip add 10.182.48.1 255.255.255.0
+no shut
+ipv6 add 2800:4d3a:3:1::/64
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.60 0.0.0.3
+network 10.182.48.0  0.0.0.255
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/1
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+exit
+ipv6 router eigrp 200
+no shut
+
+
+<----------------------------------------------------->
+hostname CEUTEC-CENTROAMERICA-Estudiantes
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/1/0
+description Hacia-WanCentroamerica
+ip add 172.27.0.66 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:13::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanEstudiantes
+ip add 10.182.0.1 255.255.248.0
+no shut
+ipv6 add 2800:4d3a:3:0::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.64 0.0.0.3
+network 10.182.0.0  0.0.7.255
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/1/0
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+
+ <----------------------- CEUTEC-PRADO------------------------------>
+hostname CEUTEC-PRADO
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+inter se0/1/1
+description Hacia-WAN-CeutecZCentral
+ip add 172.27.0.70 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:F::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Hacia-laboratoriosPrado
+ip add 172.27.0.73 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:14::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Hacia-AdministracionPrado
+ip add 172.27.0.77 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:15::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description  Hacia-EstudiantesPrado
+ip add 172.27.0.81 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:16::1/64
+clock rate 2000000
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.68 0.0.0.3
+network 172.27.0.72 0.0.0.3
+network 172.27.0.76 0.0.0.3
+network 172.27.0.80 0.0.0.3
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/1/1
+ipv6 eigrp 200
+inter se0/0/0
+ipv6 eigrp 200
+inter se0/0/1
+ipv6 eigrp 200
+inter se0/1/0
+ipv6 eigrp 200
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+
+<----------------------------------------------------->
+hostname CEUTEC-PRADO-Laboratorios
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/3/0
+description Hacia-WanPrado
+ip add 172.27.0.74 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:14::2/64
+clock rate 2000000
+no shut
+
+
+*conexiones Lan
+inter eth1/2
+description Hacia-LanLaboratorio1
+ip add 10.182.56.129 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:4:2::/64
+no shut
+
+inter eth1/1
+description Hacia-LanLaboratorio2
+ip add 10.182.57.1 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:4:3::/64
+no shut
+
+inter eth1/0
+description Hacia-LanLaboratorio3
+ip add 10.182.57.129 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:4:4::/64
+no shut
+
+inter fa0/1
+description Hacia-LanLaboratorio4
+ip add 10.182.58.1 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:4:5::/64
+no shut
+
+inter fa0/0
+description Hacia-LanLaboratorio5 
+ip add 10.182.58.129 255.255.255.128
+no shut 
+ipv6 add  2800:4d3a:4:6::/64
+no shut
+
+
+
+
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.72 0.0.0.3
+network 10.182.56.128 0.0.0.127
+network 10.182.57.0 0.0.0.127
+network 10.182.57.128 0.0.0.127
+network 10.182.58.128 0.0.0.127
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/3/0
+ipv6 eigrp 200
+inter eth1/2
+ipv6 eigrp 200
+inter eth1/1
+ipv6 eigrp 200
+inter eth1/0
+ipv6 eigrp 200
+inter fa0/1
+ipv6 eigrp 200
+inter fa0/0
+ipv6 eigrp 200
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+<----------------------------------------------------->
+hostname CEUTEC-PRADO-Administracion
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/0/1
+description Hacia-WanPRADO
+ip add 172.27.0.78 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:15::2/64
+clock rate 2000000
+no shut
+
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanAdministracion
+ip add 10.182.49.1 255.255.255.0
+no shut
+ipv6 add 2800:4d3a:4:1::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.76 0.0.0.3
+network 10.182.49.0 0.0.0.255
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/1
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+<----------------------------------------------------->
+hostname CEUTEC-PRADO-Estudiantes
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/1/0
+description Hacia-WanPRADO
+ip add 172.27.0.82 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:16::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanEstudiantes
+ip add 10.182.8.1 255.255.248.0
+no shut
+ipv6 add 2800:4d3a:4:0::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.80 0.0.0.3
+network 10.182.8.0 0.0.7.255
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/1/0
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+ <----------------------- CEUTEC-PROCERES------------------------------>
+hostname CEUTEC-PROCERES
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/1/1
+description Hacia-WAN-CeutecZCentral
+ip add 172.27.0.86 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:10::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Hacia-laboratoriosPROCERES
+ip add 172.27.0.89 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:17::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Hacia-AdministracionPROCERES
+ip add 172.27.0.93 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:18::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description  Hacia-EstudiantesPROCERES
+ip add 172.27.0.97 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:19::1/64
+clock rate 2000000
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.84 0.0.0.3
+network 172.27.0.88 0.0.0.3
+network 172.27.0.92 0.0.0.3
+network 172.27.0.96 0.0.0.3
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/1/1
+ipv6 eigrp 200
+inter se0/0/0
+ipv6 eigrp 200
+inter se0/0/1
+ipv6 eigrp 200
+inter se0/1/0
+ipv6 eigrp 200
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+<----------------------------------------------------->
+hostname CEUTEC-PROCERES-Laboratorios
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/3/0
+description Hacia-WanPROCERES
+ip add 172.27.0.90 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:17::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter eth1/2
+description Hacia-LanLaboratorio1
+ip add 10.182.59.1 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:5:2::/64
+no shut
+
+inter eth1/1
+description Hacia-LanLaboratorio2
+ip add 10.182.59.129 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:5:3::/64
+no shut
+
+inter eth1/0
+description Hacia-LanLaboratorio3
+ip add 10.182.60.1 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:5:4::/64
+no shut
+
+inter fa0/1
+description Hacia-LanLaboratorio4
+ip add 10.182.60.129 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:5:5::/64
+no shut
+
+inter fa0/0
+description Hacia-LanLaboratorio5 
+ip add 10.182.61.1 255.255.255.128
+no shut 
+ipv6 add  2800:4d3a:5:6::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.88 0.0.0.3
+network 10.182.59.0 0.0.0.127
+network 10.182.59.128 0.0.0.127
+network 10.182.60.0 0.0.0.127
+network 10.182.60.128 0.0.0.127
+network 10.182.61.0 0.0.0.127
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/3/0
+ipv6 eigrp 200
+inter eth1/2
+ipv6 eigrp 200
+inter eth1/1
+ipv6 eigrp 200
+inter eth1/0
+ipv6 eigrp 200
+inter fa0/1
+ipv6 eigrp 200
+inter fa0/0
+ipv6 eigrp 200
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+<----------------------------------------------------->
+hostname CEUTEC-PROCERES-Administracion
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/0/1
+description Hacia-WanPROCERES
+ip add 172.27.0.94 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:18::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanAdministracion
+ip add 10.182.50.1 255.255.255.0
+no shut
+ipv6 add 2800:4d3a:5:1::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.92 0.0.0.3
+network 10.182.50.0 0.0.0.255
+
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/1
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+<----------------------------------------------------->
+hostname CEUTEC-PROCERES-Estudiantes
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+
+inter se0/1/0
+description Hacia-WanPROCERES
+ip add 172.27.0.98 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:19::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanEstudiantes
+ip add 10.182.16.1 255.255.248.0
+no shut
+ipv6 add 2800:4d3a:5:0::/64
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.96 0.0.0.3
+network 10.182.16.0 0.0.7.255
+
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/1/0
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+
+<----------------------- CEUTEC-NORTE------------------------------>
+hostname CEUTEC-NORTE
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+inter se0/1/0
+description Hacia-Ceutec
+ip add 172.27.0.50 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:D::2/64
+clock rate 2000000
+no shut
+
+inter se0/1/1
+description Hacia-NORTE-SPS
+ip add 172.27.0.101 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1A::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Hacia-CENTRO-SPS
+ip add 172.27.0.117 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1B::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description  Hacia-LACEIBA-LCE
+ip add 172.27.0.133 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1C::1/64
+clock rate 2000000
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.48 0.0.0.3
+network 172.27.0.100 0.0.0.3
+network 172.27.0.116 0.0.0.3
+network 172.27.0.132 0.0.0.3
+
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/1/0
+ipv6 eigrp 200
+inter se0/1/1
+ipv6 eigrp 200
+inter se0/0/0
+ipv6 eigrp 200
+inter se0/0/1
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+hostname NORTE-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+inter se0/1/1
+description Hacia-CEUTEC-NORTE
+ip add 172.27.0.102 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1A::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Hacia-Laboratorios-NorteSPS
+ip add 172.27.0.105 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1D::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Hacia-ADMINISTRACION-NorteSPS
+ip add 172.27.0.109 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1E::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description  Hacia-ESTUDIANTES-NorteSPS
+ip add 172.27.0.113 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1F::1/64
+clock rate 2000000
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.100 0.0.0.3
+network 172.27.0.104 0.0.0.3
+network 172.27.0.108 0.0.0.3
+network 172.27.0.112 0.0.0.3
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/1/1
+ipv6 eigrp 200
+inter se0/0/0
+ipv6 eigrp 200
+inter se0/0/1
+ipv6 eigrp 200
+inter se0/1/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+hostname Laboratorios-NorteSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/3/0
+description Hacia-NORTE-SPS
+ip add 172.27.0.106 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1D::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter eth1/2
+description Hacia-LanLaboratorio1
+ip add 10.182.61.129 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:6:2::/64
+no shut
+
+inter eth1/1
+description Hacia-LanLaboratorio2
+ip add 10.182.62.1 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:6:3::/64
+no shut
+
+inter eth1/0
+description Hacia-LanLaboratorio3
+ip add 10.182.62.129 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:6:4::/64
+no shut
+
+inter fa0/1
+description Hacia-LanLaboratorio4
+ip add 10.182.63.1 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:6:5::/64
+no shut
+
+inter fa0/0
+description Hacia-LanLaboratorio5 
+ip add 10.182.63.129 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:6:6::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.104 0.0.0.3
+network 10.182.61.128 0.0.0.127
+network 10.182.62.0 0.0.0.127
+network 10.182.62.128 0.0.0.127
+network 10.182.63.0 0.0.0.127
+network 10.182.63.128 0.0.0.127
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/3/0
+ipv6 eigrp 200
+inter eth1/2
+ipv6 eigrp 200
+inter eth1/1
+ipv6 eigrp 200
+inter eth1/0
+ipv6 eigrp 200
+inter fa0/1
+ipv6 eigrp 200
+inter fa0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+hostname ADMINISTRACION-NorteSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/1
+description Hacia-NORTE-SPS
+ip add 172.27.0.110 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1E::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanAdministracion
+ip add 10.182.51.1 255.255.255.0
+no shut
+ipv6 add 2800:4d3a:6:1::/64
+no shut
+
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.108 0.0.0.3
+network 10.182.51.0 0.0.0.255
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/1
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+hostname ESTUDIANTES-NorteSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/1/0
+description Hacia-NORTE-SPS
+ip add 172.27.0.114 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1F::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanEstudiantes
+ip add 10.182.24.1 255.255.248.0
+no shut
+ipv6 add 2800:4d3a:6:0::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.112 0.0.0.3
+network 10.182.24.0 0.0.7.255
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/1
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+<----------------------- CEUTEC-Centro------------------------------>
+
+hostname CENTRO-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+inter se0/1/1
+description Hacia-Norte
+ip add 172.27.0.118 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1B::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Hacia-LaboratoriosCentroSPS
+ip add 172.27.0.121 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:20::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Hacia-ADMINISTRACION-CentroSPS
+ip add 172.27.0.125 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:21::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description  Hacia-ESTUDIANTES-CentroSPS
+ip add 172.27.0.129 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:22::1/64
+clock rate 2000000
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.116 0.0.0.3
+network 172.27.0.120 0.0.0.3
+network 172.27.0.124 0.0.0.3
+network 172.27.0.128 0.0.0.3
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/1/1
+ipv6 eigrp 200
+inter se0/0/0
+ipv6 eigrp 200
+inter se0/0/1
+ipv6 eigrp 200
+inter se0/1/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+hostname LaboratoriosCentroSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/3/0
+description Hacia-CENTRO-SPS
+ip add 172.27.0.122 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:20::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter eth1/2
+description Hacia-LanLaboratorio1
+ip add 10.182.64.1 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:7:2::/64
+no shut
+
+inter eth1/1
+description Hacia-LanLaboratorio2
+ip add 10.182.64.129 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:7:3::/64
+no shut
+
+inter eth1/0
+description Hacia-LanLaboratorio3
+ip add 10.182.65.1 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:7:4::/64
+no shut
+
+inter fa0/1
+description Hacia-LanLaboratorio4
+ip add 10.182.65.129 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:7:5::/64
+no shut
+
+inter fa0/0
+description Hacia-LanLaboratorio5 
+ip add 10.182.66.1 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:7:6::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.120 0.0.0.3
+network 10.182.64.0 0.0.0.127
+network 10.182.64.128 0.0.0.127
+network 10.182.65.0 0.0.0.127
+network 10.182.65.128 0.0.0.127
+network 10.182.66.0 0.0.0.127
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/3/0
+ipv6 eigrp 200
+inter eth1/2
+ipv6 eigrp 200
+inter eth1/1
+ipv6 eigrp 200
+inter eth1/0
+ipv6 eigrp 200
+inter fa0/1
+ipv6 eigrp 200
+inter fa0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+hostname ADMINISTRACION-CentroSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/1
+description Hacia-CENTRO-SPS
+ip add 172.27.0.126 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:21::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanAdministracion
+ip add 10.182.52.1 255.255.255.0
+no shut
+ipv6 add 2800:4d3a:7:1::/64
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.124 0.0.0.3
+network 10.182.52.0 0.0.0.255
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/1
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+hostname ESTUDIANTES-CentroSPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/1/0
+description Hacia-CENTRO-SPS
+ip add 172.27.0.130 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:22::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanEstudiantes
+ip add 10.182.32.1 255.255.248.0
+no shut
+ipv6 add 2800:4d3a:7:0::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.128 0.0.0.3
+network 10.182.32.0 0.0.7.255
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/1
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+<----------------------- CEUTEC-LACEIBA------------------------------>
+
+hostname LACEIBA-LCE
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+ipv6 unicast-routing
+inter se0/1/1
+description Hacia-Norte
+ip add 172.27.0.134 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1C::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Hacia-Laboratorios-LaCeiba
+ip add 172.27.0.137 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:23::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Hacia-ADMINISTRACION-LaCeiba
+ip add 172.27.0.141 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:24::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description  Hacia-ESTUDIANTES-LaCeiba
+ip add 172.27.0.145 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:25::1/64
+clock rate 2000000
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.132 0.0.0.3
+network 172.27.0.136 0.0.0.3
+network 172.27.0.140 0.0.0.3
+network 172.27.0.144 0.0.0.3
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/1/1
+ipv6 eigrp 200
+inter se0/0/0
+ipv6 eigrp 200
+inter se0/0/1
+ipv6 eigrp 200
+inter se0/1/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+hostname Laboratorios-LaCeiba
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/3/0
+description Hacia-LACEIBA-LCE
+ip add 172.27.0.138 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:23::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter eth1/2
+description Hacia-LanLaboratorio1
+ip add 10.182.66.129 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:8:2::/64
+no shut
+
+inter eth1/1
+description Hacia-LanLaboratorio2
+ip add 10.182.67.1 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:8:3::/64
+no shut
+
+inter eth1/0
+description Hacia-LanLaboratorio3
+ip add 10.182.67.129 255.255.255.128
+no shut
+ipv6 add 2800:4d3a:8:4::/64
+no shut
+
+inter fa0/1
+description Hacia-LanLaboratorio4
+ip add 10.182.68.1 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:8:5::/64
+no shut
+
+inter fa0/0
+description Hacia-LanLaboratorio5 
+ip add 10.182.68.129 255.255.255.128
+no shut 
+ipv6 add 2800:4d3a:8:6::/64
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.136 0.0.0.3
+network 10.182.66.128 0.0.0.127
+network 10.182.67.0 0.0.0.127
+network 10.182.67.128 0.0.0.127
+network 10.182.68.0 0.0.0.127
+network 10.182.68.128 0.0.0.127
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/3/0
+ipv6 eigrp 200
+inter eth1/2
+ipv6 eigrp 200
+inter eth1/1
+ipv6 eigrp 200
+inter eth1/0
+ipv6 eigrp 200
+inter fa0/1
+ipv6 eigrp 200
+inter fa0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+hostname ADMINISTRACION-LaCeiba
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/1
+description Hacia-LACEIBA-LCE
+ip add 172.27.0.142 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:24::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanAdministracion
+ip add 10.182.53.1 255.255.255.0
+no shut
+ipv6 add 2800:4d3a:8:1::/64
+no shut
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.140 0.0.0.3
+network 10.182.53.0 0.0.0.255
+
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/1
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut
+
+
+
+hostname ESTUDIANTES-LaCeiba
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/1/0
+description Hacia-LACEIBA-LCE
+ip add 172.27.0.146 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:25::2/64
+clock rate 2000000
+no shut
+
+*conexiones Lan
+inter gi0/0
+description Hacia-LanEstudiantes
+ip add 10.182.40.1 255.255.248.0
+no shut
+ipv6 add 2800:4d3a:8:0::/64
+no shut
+
+
+Enrutamiento EIGRP
+router eigrp 200
+network 172.27.0.144 0.0.0.3
+network 10.182.40.0 0.0.7.255
+
+
+
+no au
+
+Enrutamiento EIGRP En ipv6
+inter se0/0/1
+ipv6 eigrp 200
+inter gi0/0
+ipv6 eigrp 200
+
+
+exit
+ipv6 router eigrp 200
+no shut

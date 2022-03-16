@@ -1,0 +1,889 @@
+conf t
+hostname Switch-IT
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+VLAN 15
+name GESTION
+VLAN 90
+name Usuarios-IT
+VLAN 200
+name DMZ
+VLAN 900
+name SIN-USO
+
+inter fa0/1
+description HACIA-Router-Unitec
+switchport mode trunk
+
+inter fa0/2
+description HACIA-PC1-IT
+switchport mode trunk
+
+
+inter fa0/3
+description HACIA-Server-PaginaWeb
+switchport mode trunk
+
+
+inter fa0/4
+description HACIA-Server-Registro
+switchport mode trunk
+
+
+inter fa0/5
+description HACIA-Server-Portal
+switchport mode trunk
+
+
+inter fa0/6
+description HACIA-Server-Correo
+switchport mode trunk
+
+interface range fa0/7-24
+description LIBRE
+shut
+switchport mode access
+switchport access vlan 900
+
+
+interface vlan 15
+description GESTION
+ip add 10.172.33.2 255.255.255.0
+ip default-gateway 10.172.33.1
+
+
+inter gi0/0.15
+description GESTION
+encapsulation DOt1Q 15
+ip add 10.172.33.1 255.255.255.0
+
+
+-------------------------------------------------------Inundar de internet a todos los routers-----------------------------------------------------------
+----------------------- Outside-inside Ceutec----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.149
+
+int serial0/0/0
+ip nat outside
+
+int serial0/0/1
+ip nat inside
+
+int serial0/1/1
+ip nat inside
+
+
+int serial0/1/0
+ip nat inside
+end
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/0/0
+
+----------------------- Outside-inside Norte---------------------------- 
+ip route 0.0.0.0 0.0.0.0 172.27.0.49
+ip route 0.0.0.0 0.0.0.0 172.27.0.149 xxx
+
+
+
+
+int serial0/1/0
+ip nat outside
+
+int serial0/0/0
+ip nat inside
+
+int serial0/0/1
+ip nat inside
+
+
+int serial0/1/1
+ip nat inside
+end
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/1/0
+
+
+----------------------- Outside-inside Centro----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.45
+ip route 172.27.0.148 255.255.252 172.27.0.145 
+ip route 200.107.208.0 255.255.248.0 172.27.0.145
+int serial0/1/0
+ip nat outside
+
+int serial0/0/0
+ip nat inside
+
+int serial0/0/1
+ip nat inside
+
+
+int serial0/1/1
+ip nat inside
+end
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/1/0
+
+
+----------------------- Outside-inside Centro----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.45
+ip route 172.27.0.148 255.255.252 172.27.0.145 Xxx
+ip route 200.107.208.0 255.255.248.0 172.27.0.145 xxx
+int serial0/1/0
+ip nat outside
+
+int serial0/0/0
+ip nat inside
+
+int serial0/0/1
+ip nat inside
+
+
+int serial0/1/1
+ip nat inside
+end
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/1/0
+
+
+----------------------- Outside-inside CentroAmerica----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.53
+
+int serial0/1/1
+ip nat outside
+
+int serial0/0/0
+ip nat inside
+
+int serial0/0/1
+ip nat inside
+
+int serial0/1/0
+ip nat inside
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/1/1
+
+
+----------------------- Outside-inside CAAdmin----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.61
+
+int serial0/0/1
+ip nat outside
+
+int serial0/0/0
+ip nat inside
+
+int g0/0
+ip nat inside
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/0/1
+
+----------------------- Outside-inside CALaboratorio----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.57
+
+int serial0/3/0
+ip nat outside
+
+int fa0/1
+ip nat inside
+
+int fa0/0
+ip nat inside
+
+int Eth1/0
+ip nat inside
+
+int Eth1/2
+ip nat inside
+
+int Eth1/1
+ip nat inside
+
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/3/0
+
+
+
+
+
+----------------------- Outside-inside CAEstudiantes----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.66
+
+int serial0/1/0
+ip nat outside
+
+
+int g0/0
+ip nat inside
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/1/0
+
+
+
+----------------------- Outside-inside Prado----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.69
+
+int serial0/1/1
+ip nat outside
+
+int serial0/0/0
+ip nat inside
+
+int serial0/0/1
+ip nat inside
+
+int serial0/1/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/1/1
+
+
+----------------------- Outside-inside PradoEstudiantes----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.81
+
+int serial0/1/0
+ip nat outside
+
+
+int g0/0
+ip nat inside
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/1/0
+
+
+----------------------- Outside-inside PradoAdministracion----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.77
+
+int serial0/0/1
+ip nat outside
+
+int serial0/0/0
+ip nat inside
+
+int g0/0
+ip nat inside
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/0/1
+
+
+----------------------- Outside-inside PradoLaboratorio----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.73
+
+int serial0/3/0
+ip nat outside
+
+int fa0/1
+ip nat inside
+
+int fa0/0
+ip nat inside
+
+int Eth1/0
+ip nat inside
+
+int Eth1/2
+ip nat inside
+
+int Eth1/1
+ip nat inside
+
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/3/0
+
+
+
+
+200.107.208.6
+
+----------------------- Outside-inside Proceres----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.85
+
+int serial0/1/1
+ip nat outside
+
+int serial0/0/0
+ip nat inside
+
+int serial0/0/1
+ip nat inside
+
+int serial0/1/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/1/1
+
+
+----------------------- Outside-inside ProceresEstudiantes----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.97
+
+int serial0/1/0
+ip nat outside
+
+
+int g0/0
+ip nat inside
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/1/0
+
+
+----------------------- Outside-inside ProceresAdministracion----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.93
+
+int serial0/0/1
+ip nat outside
+
+
+
+int g0/0
+ip nat inside
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/0/1
+
+
+----------------------- Outside-inside ProceresLaboratorio----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.89
+
+int serial0/3/0
+ip nat outside
+
+int fa0/1
+ip nat inside
+
+int fa0/0
+ip nat inside
+
+int Eth1/0
+ip nat inside
+
+int Eth1/2
+ip nat inside
+
+int Eth1/1
+ip nat inside
+
+
+conf t
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface serial0/3/0
+
+
+----------------------- Outside-inside UNITEC_Redundancia----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.158
+
+int Serial0/0/1
+ip nat outside
+
+int Serial0/1/0
+ip nat inside
+
+int Serial0/0/0
+ip nat inside
+
+
+int Serial0/1/1
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/0/1
+
+
+----------------------- Outside-inside UNITEC-SPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.5
+
+int Serial0/1/0
+ip nat outside
+
+int Serial0/0/1
+ip nat inside
+
+int Serial0/0/0
+ip nat inside
+
+
+int Serial0/1/1
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/0
+
+
+
+----------------------- Outside-inside Intermedio-UNITEC-SPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.29
+
+int Serial0/1/1
+ip nat outside
+
+int Serial0/1/0
+ip nat inside
+
+int Serial0/0/1
+ip nat inside
+
+
+int Serial0/0/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/1
+
+
+----------------------- Outside-inside Intermedio-UNITEC-Tegucigalpa----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.13
+
+int Serial0/1/1
+ip nat outside
+
+int Serial0/1/0
+ip nat inside
+
+int Serial0/0/1
+ip nat inside
+
+
+int Serial0/0/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/1
+
+
+----------------------- Outside-inside ESTUDIANTES-Unitec-TGU----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.25
+
+int Serial0/1/0
+ip nat outside
+e
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/0
+
+
+----------------------- Outside-inside Laboratorios-Unitec-TGU----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.17
+
+int Serial0/3/0
+ip nat outside
+
+int Ethernet1/0
+ip nat inside
+
+int Ethernet1/1
+ip nat inside
+
+
+int Ethernet1/2
+ip nat inside
+
+int FastEthernet0/0
+ip nat inside
+
+
+int FastEthernet0/1
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/3/0
+
+
+----------------------- Outside-inside ADMINISTRACION-Unitec-TGU----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.21
+
+int Serial0/0/1
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/0/1
+
+
+----------------------- Outside-inside ESTUDIANTES-Unitec-TGU----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.25
+
+int Serial0/1/0
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/0
+
+
+----------------------- Outside-inside Laboratorios-UNITEC-SPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.33
+
+int Serial0/3/0
+ip nat outside
+
+int Ethernet1/0
+ip nat inside
+
+int Ethernet1/1
+ip nat inside
+
+
+int Ethernet1/2
+ip nat inside
+
+int FastEthernet0/0
+ip nat inside
+
+
+int FastEthernet0/1
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/3/0
+
+
+----------------------- Outside-inside ADMINISTRACION-UNITEC-SPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.37
+
+int Serial0/0/1
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/0/1
+
+
+----------------------- Outside-inside ESTUDIANTES-UNITEC-SPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.41
+
+int Serial0/1/0
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/0
+
+
+
+----------------------- Outside-inside NORTE-SPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.101
+
+int Serial0/1/1
+ip nat outside
+
+int Serial0/1/0
+ip nat inside
+
+int Serial0/0/1
+ip nat inside
+
+
+int Serial0/0/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/1
+
+
+
+----------------------- Outside-inside Laboratorios-NorteSPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.105
+
+int Serial0/3/0
+ip nat outside
+
+int Ethernet1/0
+ip nat inside
+
+int Ethernet1/1
+ip nat inside
+
+
+int Ethernet1/2
+ip nat inside
+
+int FastEthernet0/0
+ip nat inside
+
+
+int FastEthernet0/1
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/3/0
+
+
+
+----------------------- Outside-inside ADMINISTRACION-NorteSPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.109
+
+int Serial0/0/1
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/0/1
+
+
+----------------------- Outside-inside ESTUDIANTES-NorteSPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.113
+
+int Serial0/1/0
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/0
+
+
+----------------------- Outside-inside CENTRO-SPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.117
+
+int Serial0/1/1
+ip nat outside
+
+int Serial0/1/0
+ip nat inside
+
+int Serial0/0/1
+ip nat inside
+
+
+int Serial0/0/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/1
+
+
+----------------------- Outside-inside LaboratoriosCentroSPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.121
+
+int Serial0/3/0
+ip nat outside
+
+int Ethernet1/0
+ip nat inside
+
+int Ethernet1/1
+ip nat inside
+
+
+int Ethernet1/2
+ip nat inside
+
+int FastEthernet0/0
+ip nat inside
+
+
+int FastEthernet0/1
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/3/0
+
+
+----------------------- Outside-inside ADMINISTRACION-CentroSPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.125
+
+int Serial0/0/1
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/0/1
+
+
+----------------------- Outside-inside ESTUDIANTES-CentroSPS----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.129
+
+int Serial0/1/0
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/0
+
+
+
+
+----------------------- Outside-inside LACEIBA-LCE----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.133
+
+int Serial0/1/1
+ip nat outside
+
+int Serial0/1/0
+ip nat inside
+
+int Serial0/0/1
+ip nat inside
+
+
+int Serial0/0/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/1
+
+
+
+----------------------- Outside-inside Laboratorios-LaCeiba----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.137
+
+int Serial0/3/0
+ip nat outside
+
+int Ethernet1/0
+ip nat inside
+
+int Ethernet1/1
+ip nat inside
+
+
+int Ethernet1/2
+ip nat inside
+
+int FastEthernet0/0
+ip nat inside
+
+
+int FastEthernet0/1
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/3/0
+
+
+
+
+
+----------------------- Outside-inside ADMINISTRACION-LaCeiba----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.141
+
+int Serial0/0/1
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/0/1
+
+
+
+----------------------- Outside-inside ESTUDIANTES-LaCeiba----------------------------
+ip route 0.0.0.0 0.0.0.0 172.27.0.145
+
+int Serial0/1/0
+ip nat outside
+
+int GigabitEthernet0/0
+ip nat inside
+
+
+
+
+access-list 1 permit 10.172.32.64 0.0.0.7
+ip nat inside source list 1 interface  Serial0/1/0
+
+
+
+
+
+
+
+
+
+
+
+
+

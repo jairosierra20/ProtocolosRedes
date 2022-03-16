@@ -1,0 +1,95 @@
+Ceutec
+Lista de acceso para Laboratorios y Estudiantes
+
+Router de Estudiantes
+ip access-list extended FILTRO_ESTUDIANTES_SOLO_INTERNET_SALIDA
+permit ip any 200.107.208.0 0.0.7.255
+permit tcp any 200.107.208.0 0.0.7.255
+permit icmp any 200.107.208.0 0.0.7.255
+permit udp any 200.107.208.0 0.0.7.255
+permit eigrp any 200.107.208.0 0.0.7.255
+permit ospf any 200.107.208.0 0.0.7.255
+
+exit…
+
+Mostrar la lista
+show access-list
+
+Agregar la lista en la interfaz de salida
+int [Interfaz de salida]
+ip access-group FILTRO_ESTUDIANTES_SOLO_INTERNET_SALIDA out
+
+
+Router de Laboratorio
+ip access-list extended FILTRO_LABORATORIO_SOLO_INTERNET_SALIDA
+permit ip any 200.107.208.0 0.0.7.255
+permit tcp any 200.107.208.0 0.0.7.255
+permit icmp any 200.107.208.0 0.0.7.255
+permit udp any 200.107.208.0 0.0.7.255
+permit eigrp any 200.107.208.0 0.0.7.255
+permit ospf any 200.107.208.0 0.0.7.255
+
+exit…
+
+Mostrar la lista
+show access-list
+
+Agregar la lista en la interfaz de salida
+int [Interfaz de salida]
+ip access-group FILTRO_LABORATORIO_SOLO_INTERNET_SALIDA out
+
+------------------------------------------------------------
+Unitec
+Router de Estudiantes
+ip access-list extended FILTRO_ESTUDIANTES_SOLO_INTERNET_SALIDA
+permit ip any 10.172.32.64 0.0.0.7
+permit icmp any 10.172.32.64 0.0.0.7
+permit tcp any 10.172.32.64 0.0.0.7
+permit udp any 10.172.32.64 0.0.0.7
+permit ospf any 10.172.32.64 0.0.0.7
+permit eigrp any 10.172.32.64 0.0.0.7
+
+exit…
+
+Mostrar la lista
+show access-list
+
+Agregar la lista en la interfaz de salida
+int [Interfaz de salida]
+ip access-group FILTRO_ESTUDIANTES_SOLO_INTERNET_SALIDA out
+
+
+Router de Laboratorio
+ip access-list extended FILTRO_LABORATORIO_SOLO_INTERNET_SALIDA
+permit ip any 10.172.32.64 0.0.0.7
+permit icmp any 10.172.32.64 0.0.0.7
+permit tcp any 10.172.32.64 0.0.0.7
+permit udp any 10.172.32.64 0.0.0.7
+permit ospf any 10.172.32.64 0.0.0.7
+permit eigrp any 10.172.32.64 0.0.0.7
+
+
+exit…
+
+Mostrar la lista
+show access-list
+
+Agregar la lista en la interfaz de salida
+int [Interfaz de salida]
+ip access-group FILTRO_LABORATORIO_SOLO_INTERNET_SALIDA out
+
+En Router y Switches solo acceso a IT
+ip access-list standard ACCESO_IT
+permit 10.172.32.0 0.0.0.63
+
+exit…
+
+configuracion en las lineas
+Line vty 0 15
+Access-class ACCESO_IT in
+
+
+
+
+
+

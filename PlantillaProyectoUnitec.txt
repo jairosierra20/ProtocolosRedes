@@ -1,0 +1,398 @@
+hostname UNITEC
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/1/0
+description Hacia-CEUTEC
+ip add 172.27.0.149 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:0::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Hacia-WAN-UnitecTGU
+ip add 172.27.0.1 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/1
+description Hacia-WAN-UnitecSPS
+ip add 172.27.0.9 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:2::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Unitec-Redundancia
+ip add 172.27.0.166 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:E::1/64
+clock rate 2000000
+no shut
+
+hostname UNITEC-Tegucigalpa
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/0
+description Hacia-Unitec
+ip add 172.27.0.2 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:1::2/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description Hacia-Unitec-SPS
+ip add 172.27.0.5 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:3::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/1
+description Hacia-Intermedio-UNITEC-Tegucigalpa
+ip add 172.27.0.13 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:4::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description UnitecTGU-Redundancia
+ip add 172.27.0.158 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:C::1/64
+clock rate 2000000
+no shut
+
+inter gi0/0
+description Hacia-IT
+ip add 10.172.23.1 255.255.255.192
+no shut
+ipv6 add 2800:4D3A:1:7::/64
+no shut
+
+hostname UNITEC-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/0
+description Hacia-Unitec
+ip add 172.27.0.10 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:2::2/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description Hacia-Unitec-Tegucigalpa
+ip add 172.27.0.6 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:3::2/64
+clock rate 2000000
+no shut
+
+inter se0/1/1
+description Intermedio-UNITEC-SPS
+ip add 172.27.0.29 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:8::1/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Redundancia-UnitecSPS
+ip add 172.27.0.162 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:D::1/64
+clock rate 2000000
+no shut
+
+hostname Intermedio-UNITEC-Tegucigalpa
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/0
+description Hacia-Laboratorios-Unitec-TGU
+ip add 172.27.0.17 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:5::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description Hacia-ESTUDIANTES-Unitec-TGU
+ip add 172.27.0.25 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:7::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/1
+description Hacia-Unitec-Tegucigalpa
+ip add 172.27.0.14 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:4::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Hacia-ADMINISTRACION-Unitec-TGU
+ip add 172.27.0.21 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:6::1/64
+clock rate 2000000
+no shut
+
+
+hostname Laboratorios-Unitec-TGU
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/3/0
+description Intermedio-UNITEC-Tegucigalpa
+ip add 172.27.0.18 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:5::2/64
+clock rate 2000000
+no shut
+
+hostname ADMINISTRACION-Unitec-TGU
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/1
+description Intermedio-UNITEC-Tegucigalpa
+ip add 172.27.0.22 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:6::2/64
+clock rate 2000000
+no shut
+
+
+hostname ESTUDIANTES-Unitec-TGU
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/1/0
+description Intermedio-UNITEC-Tegucigalpa
+ip add 172.27.0.26 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:7::2/64
+clock rate 2000000
+no shut
+
+
+hostname Intermedio-UNITEC-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/0
+description Hacia-Laboratorios-UNITEC-SPS
+ip add 172.27.0.33 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:9::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description Hacia-ESTUDIANTES-UNITEC-SPS
+ip add 172.27.0.41 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:B::1/64
+clock rate 2000000
+no shut
+
+inter se0/1/1
+description Hacia-UNITEC-SPS
+ip add 172.27.0.30 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:8::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Hacia-ADMINISTRACION-UNITEC-SPS
+ip add 172.27.0.37 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:A::1/64
+clock rate 2000000
+no shut
+
+
+hostname Laboratorios-UNITEC-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/3/0
+description Hacia-Intermedio-UNITEC-SPS
+ip add 172.27.0.34 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:9::2/64
+clock rate 2000000
+no shut
+
+
+hostname ADMINISTRACION-UNITEC-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/0/1
+description Hacia-Intermedio-UNITEC-SPS
+ip add 172.27.0.38 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:A::2/64
+clock rate 2000000
+no shut
+
+
+hostname ESTUDIANTES-UNITEC-SPS
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/1/0
+description Hacia-Intermedio-UNITEC-SPS
+ip add 172.27.0.42 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:B::2/64
+clock rate 2000000
+no shut
+
+hostname UNITEC_REDUNDANCIA
+username cisco privilege 15 secret cisco
+Line vty 0 15
+login local
+Line con 0
+Login local
+no ip domain-lookup
+banner motd !
+SE TOMARAN ACCIONES LEGALES , SI ENTRA EN ESTA RED
+!
+
+ipv6 unicast-routing
+inter se0/1/1
+description Redundancia-CEUTEC
+ip add 172.27.0.153 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:29::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/1
+description Redundancia-UnitecTGU
+ip add 172.27.0.157 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:26::2/64
+clock rate 2000000
+no shut
+
+inter se0/1/0
+description Redundancia-UnitecSPS
+ip add 172.27.0.161 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:27::2/64
+clock rate 2000000
+no shut
+
+inter se0/0/0
+description Redundancia-Unitec
+ip add 172.27.0.165 255.255.255.252
+no shut
+ipv6 add 2800:4d3a:9:28::2/64
+clock rate 2000000
+no shut
+
+
